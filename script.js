@@ -46,7 +46,7 @@ function moveForward(rover) {
    if (rover.direction === "N") {
     rover.y += 1;
    } else if (rover.direction === "S") {
-    rover.y -= 1`;`
+    rover.y -= 1;
    } else if (rover.direction === "E") {
     rover.x += 1;
    } else if (rover.direction === "W") {
@@ -55,7 +55,21 @@ function moveForward(rover) {
    console.log(`moveForward was called, rover is now at [${rover.x}, ${rover.y}]`);
 }
 
-turnLeft(rover);
-turnLeft(rover);
-turnRight(rover);
-moveForward(rover);
+function commands(string) {
+    for (let i = 0; i < string.length; i++) {
+        if (string[i] === "f") {
+            moveForward(rover);
+        } else if (string[i] === "r") {
+            turnRight(rover);
+        } else if (string[i] === "l") {
+            turnLeft(rover);
+        }
+    }
+}
+
+// turnLeft(rover);
+// turnLeft(rover);
+// turnRight(rover);
+// moveForward(rover);
+
+commands("rffrfflfrff");
