@@ -5,6 +5,8 @@ let rover = {
     y: 0,
 }
 
+let travelLog = [];
+
 // =================
 function turnLeft(rover) {
     switch (rover.direction) {
@@ -53,6 +55,7 @@ function moveForward(rover) {
     rover.x -= 1;
    }
    console.log(`moveForward was called, rover is now at [${rover.x}, ${rover.y}]`);
+   travelLog.push([rover.x, rover.y]);
 }
 
 function commands(string) {
@@ -65,6 +68,7 @@ function commands(string) {
             turnLeft(rover);
         }
     }
+    console.log("Travel Log:\n", travelLog);
 }
 
 // turnLeft(rover);
