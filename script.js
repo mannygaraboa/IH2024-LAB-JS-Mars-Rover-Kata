@@ -45,17 +45,45 @@ function turnRight(rover) {
 }
 
 function moveForward(rover) {
-   if (rover.direction === "N") {
-    rover.y += 1;
-   } else if (rover.direction === "S") {
-    rover.y -= 1;
-   } else if (rover.direction === "E") {
-    rover.x += 1;
-   } else if (rover.direction === "W") {
-    rover.x -= 1;
-   }
-   console.log(`moveForward was called, rover is now at [${rover.x}, ${rover.y}]`);
-   travelLog.push([rover.x, rover.y]);
+    switch (rover.direction) {
+        case "N":
+            if (rover.y > 0) {
+                rover.y -= 1;
+            } else {
+                console.log("You can't move North, you are at the edge of the grid!");
+            }
+            break;
+        case "S":
+            if (rover.y < 9) {
+                rover.y += 1;
+            } else {
+                console.log("You can't move South, you are at the edge of the grid!");
+            }
+            break;
+        case "E":
+            if (rover.x < 9) {
+                rover.x += 1;
+            } else {
+                console.log("You can't move East, you are at the edge of the grid!");
+            }
+            break;
+        case "W":
+            if (rover.x > 0) {
+                rover.x -=1;
+            } else {
+                console.log("You can't move West, you are at the edge of the grid!");
+            }
+            break;
+    }
+
+    console.log(`moveForward was called, rover is now at [${rover.x}, ${rover.y}]`);
+    travelLog.push([rover.x, rover.y]);
+}
+
+function moveBackward(rover) {
+    switch (rover.direction) {
+        
+    }
 }
 
 function commands(string) {
@@ -66,14 +94,17 @@ function commands(string) {
             turnRight(rover);
         } else if (string[i] === "l") {
             turnLeft(rover);
+        } else if (string[i] === "b") {
+            moveBackward(rover);
         }
     }
     console.log("Travel Log:\n", travelLog);
 }
+
 
 // turnLeft(rover);
 // turnLeft(rover);
 // turnRight(rover);
 // moveForward(rover);
 
-commands("rffrfflfrff");
+commands("rffffffrffffffflffffflff");
