@@ -69,7 +69,7 @@ function moveForward(rover) {
             break;
         case "W":
             if (rover.x > 0) {
-                rover.x -=1;
+                rover.x -= 1;
             } else {
                 console.log("You can't move West, you are at the edge of the grid!");
             }
@@ -82,8 +82,38 @@ function moveForward(rover) {
 
 function moveBackward(rover) {
     switch (rover.direction) {
-        
+        case "N":
+            if (rover.y < 9) {
+                rover.y += 1;
+            } else {
+                console.log("You can't move backwards facing North, you are at the edge of the grid!");
+            }
+            break;
+        case "S":
+            if (rover.y > 0) {
+                rover.y -= 1;
+            } else {
+                console.log("You can't move backwards facing South, you are at the edge of the grid!");
+            }
+            break;
+        case "E":
+            if (rover.x > 0) {
+                rover.x -= 1;
+            } else {
+                console.log("You can't move backwards facing East, you are at the edge of the grid!");
+            }
+            break;
+        case "W":
+            if (rover.x < 9) {
+                rover.x += 1;
+            } else {
+                console.log("You can't move backwards facing West, you are at the edge of the grid!");
+            }
+            break;
     }
+
+    console.log(`moveBackward was called, rover is now at [${rover.x}, ${rover.y}]`);
+    travelLog.push([rover.x, rover.y]);
 }
 
 function commands(string) {
@@ -107,4 +137,4 @@ function commands(string) {
 // turnRight(rover);
 // moveForward(rover);
 
-commands("rffffffrffffffflffffflff");
+commands("rffffffrffffffflbbblff");
