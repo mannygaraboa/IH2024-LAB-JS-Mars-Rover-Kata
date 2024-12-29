@@ -126,6 +126,8 @@ function commands(string) {
             turnLeft(rover);
         } else if (string[i] === "b") {
             moveBackward(rover);
+        } else {
+            console.log(`Invalid command: ${string[i]}`);
         }
     }
     console.log("Travel Log:\n", travelLog);
@@ -137,4 +139,4 @@ function commands(string) {
 // turnRight(rover);
 // moveForward(rover);
 
-commands("rffffffrffffffflbbblff");
+commands("rffffopopopopffrffffffflbbblff");
