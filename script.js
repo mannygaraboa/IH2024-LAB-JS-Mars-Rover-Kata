@@ -5,6 +5,11 @@ let rover = {
     y: 0,
 }
 
+let obstacle = {
+    x: 6,
+    y: 3
+}
+
 let travelLog = [];
 
 // =================
@@ -44,12 +49,15 @@ function turnRight(rover) {
     console.log(`turnRight was called, rover is facing ${rover.direction}`);
 }
 
-function moveForward(rover) {
+function moveForward(rover, obstacle) {
     switch (rover.direction) {
         case "N":
-            if (rover.y > 0) {
+            if (rover.y > 0 && (rover.y !== obstacle.y + 1 && rover.x !== obstacle.x)) {
                 rover.y -= 1;
-            } else {
+            } else if (rover.y == obstacle.y + 1 && rover.x == obstacle.x) {
+                console.log("You can't move North, there is an obstacle in the way!");
+            }
+            else {
                 console.log("You can't move North, you are at the edge of the grid!");
             }
             break;
@@ -119,7 +127,7 @@ function moveBackward(rover) {
 function commands(string) {
     for (let i = 0; i < string.length; i++) {
         if (string[i] === "f") {
-            moveForward(rover);
+            moveForward(rover, obstacle);
         } else if (string[i] === "r") {
             turnRight(rover);
         } else if (string[i] === "l") {
@@ -139,4 +147,4 @@ function commands(string) {
 // turnRight(rover);
 // moveForward(rover);
 
-commands("rffffopopopopffrffffffflbbblff");
+commands("rrfffflfffffflf");
