@@ -56,28 +56,33 @@ function moveForward(rover, obstacle) {
                 rover.y -= 1;
             } else if (rover.y == obstacle.y + 1 && rover.x == obstacle.x) {
                 console.log("You can't move North, there is an obstacle in the way!");
-            }
-            else {
+            } else {
                 console.log("You can't move North, you are at the edge of the grid!");
             }
             break;
         case "S":
-            if (rover.y < 9) {
+            if (rover.y < 9 && (rover.y !== obstacle.y - 1 && rover.x !== obstacle.x)) {
                 rover.y += 1;
+            } else if (rover.y == obstacle.y - 1 && rover.x == obstacle.x) {
+                console.log("You can't move South, there is an obstacle in the way!");
             } else {
                 console.log("You can't move South, you are at the edge of the grid!");
             }
             break;
         case "E":
-            if (rover.x < 9) {
+            if (rover.x < 9 && (rover.x !== obstacle.x - 1 && rover.y !== obstacle.y)) {
                 rover.x += 1;
+            } else if (rover.x == obstacle.x - 1 && rover.y == obstacle.y) {
+                console.log("You can't move East, there is an obstacle in the way!");
             } else {
                 console.log("You can't move East, you are at the edge of the grid!");
             }
             break;
         case "W":
-            if (rover.x > 0) {
+            if (rover.x > 0 && (rover.x !== obstacle.x + 1 && rover.y !== obstacle.y)) {
                 rover.x -= 1;
+            } else if (rover.x == obstacle.x + 1 && rover.y == obstacle.y) {
+                console.log("You can't move West, there is an obstacle in the way!");
             } else {
                 console.log("You can't move West, you are at the edge of the grid!");
             }
@@ -93,6 +98,8 @@ function moveBackward(rover) {
         case "N":
             if (rover.y < 9) {
                 rover.y += 1;
+            } else if (rover.y == obstacle.y - 1 && rover.x == obstacle.x) {
+                console.log("You can't move backwards facing North, there is an obstacle in the way!");
             } else {
                 console.log("You can't move backwards facing North, you are at the edge of the grid!");
             }
@@ -100,6 +107,8 @@ function moveBackward(rover) {
         case "S":
             if (rover.y > 0) {
                 rover.y -= 1;
+            } else if (rover.y == obstacle.y + 1 && rover.x == obstacle.x) {
+                console.log("You can't move backwards facing South, there is an obstacle in the way!");
             } else {
                 console.log("You can't move backwards facing South, you are at the edge of the grid!");
             }
@@ -107,6 +116,8 @@ function moveBackward(rover) {
         case "E":
             if (rover.x > 0) {
                 rover.x -= 1;
+            } else if (rover.x == obstacle.x + 1 && rover.y == obstacle.y) {
+                console.log("You can't move backwards facing East, there is an obstacle in the way!");
             } else {
                 console.log("You can't move backwards facing East, you are at the edge of the grid!");
             }
@@ -114,6 +125,8 @@ function moveBackward(rover) {
         case "W":
             if (rover.x < 9) {
                 rover.x += 1;
+            } else if (rover.x == obstacle.x - 1 && rover.y == obstacle.y) {
+                console.log("You can't move backwards facing West, there is an obstacle in the way!");
             } else {
                 console.log("You can't move backwards facing West, you are at the edge of the grid!");
             }
